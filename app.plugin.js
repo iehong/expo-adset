@@ -3,6 +3,7 @@ const {
   AndroidConfig,
   createRunOncePlugin,
   withAppBuildGradle,
+  withProjectBuildGradle,
 } = require("@expo/config-plugins");
 const { resolve } = require("path");
 const pkg = require("./package.json");
@@ -58,6 +59,26 @@ const withKey = (config, { appkey, reward }) => {
   config = withAppBuildGradle(config, async (config) => {
     if (!hasDependencies(config.modResults.contents)) {
       config.modResults.contents = addDependencies(config.modResults.contents);
+    }
+    return config;
+  });
+  config = withProjectBuildGradle(config, async (config) => {
+    const mavenRepo1 =
+      'maven { url "https://artifact.bytedance.com/repository/Volcengine/" }';
+    const mavenRepo2 =
+      'maven { url "https://artifact.bytedance.com/repository/pangle/" }';
+    // Ensure we only append if it's not already added
+    if (!config.modResults.contents.includes(mavenRepo1)) {
+      config.modResults.contents = config.modResults.contents.replace(
+        /allprojects\s*{[\s\S]*repositories\s*{/,
+        (match) => `${match}\n\t\t${mavenRepo1}`
+      );
+    }
+    if (!config.modResults.contents.includes(mavenRepo2)) {
+      config.modResults.contents = config.modResults.contents.replace(
+        /allprojects\s*{[\s\S]*repositories\s*{/,
+        (match) => `${match}\n\t\t${mavenRepo2}`
+      );
     }
     return config;
   });
