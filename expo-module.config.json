@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["ExpoAdsetModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.adset.ExpoAdsetModule"]
+  }
+}

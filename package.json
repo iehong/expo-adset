@@ -1,0 +1,38 @@
+{
+  "name": "expo-adset",
+  "version": "1.0.0",
+  "description": "expo adset sdk",
+  "main": "index",
+  "files": [
+    "src",
+    "android",
+    "app.plugin.js",
+    "index.ts",
+    "expo-module.config.json",
+    "!android/.gradle",
+    "!android/.idea",
+    "!android/build",
+    "!android/src/testPlay"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iehong/expo-adset.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "expo",
+    "adset",
+    "android"
+  ],
+  "author": "iehong <iehong@qq.com> (https://github.com/iehong)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iehong/expo-adset/issues"
+  },
+  "homepage": "https://github.com/iehong/expo-adset#readme",
+  "peerDependencies": {
+    "expo": "*"
+  }
+}
